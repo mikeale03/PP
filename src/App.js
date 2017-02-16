@@ -16,10 +16,12 @@ class App extends Component {
                     <h2>Welcome! Go find a pair-programming-partner!</h2>
                     <img src={logo} alt="logo" />
                 </div>
-                <div className="blue">
-                    <Items niceProp={'niceItemProps'} />
-                    <Post niceProp={'POSTItemProps'} />
-                    <Search niceProp={'SEARCHItemProps'} />
+                <div className="mainApp">
+                    <Items niceProp={'ItemProps'} />
+                    <div>
+                        <Post niceProp={'POSTProps'} />
+                        <Search niceProp={'SEARCHProps'} />
+                    </div>
                 </div>
             </div>
             );
