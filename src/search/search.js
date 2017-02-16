@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Search.scss';
+import './search.scss';
 
-export default class Items extends React.Component {
+export default class Search extends React.Component {
     render(){
         return (
             <div className="search">

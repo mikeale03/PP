@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Post.scss';
+import './post.scss';
 
-export default class Items extends React.Component {
+export default class Post extends React.Component {
     render(){
         return (
             <div className="post">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Items from './Items/Items.js';
-import Post from './Post/post.js';
-import Search from './Search/search.js';
+import Items from './items/items.js';
+import Post from './post/post.js';
+import Search from './search/search.js';
 import logo from './logo.svg';
 // import './App.css';
 import './App.scss';
@@ -16,10 +16,12 @@ class App extends Component {
                     <h2>Welcome! Go find a pair-programming-partner!</h2>
                     <img src={logo} alt="logo" />
                 </div>
-                <div className="blue">
-                    <Items niceProp={'niceItemProps'} />
-                    <Post niceProp={'POSTItemProps'} />
-                    <Search niceProp={'SEARCHItemProps'} />
+                <div className="mainApp">
+                    <Items niceProp={'ItemProps'} />
+                    <div>
+                        <Post niceProp={'POSTProps'} />
+                        <Search niceProp={'SEARCHProps'} />
+                    </div>
                 </div>
             </div>
             );
