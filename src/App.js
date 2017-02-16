@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import './App.scss';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 class App extends Component {
@@ -8,14 +9,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-            <br />
-            <Button bsSize="large" block>bootstrap button is the only way to go</Button>
+            <img src={logo} alt="logo" />
+            <h2>Welcome! Go find a pair-programming-partner!</h2>
+            <img src={logo} alt="logo" />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }
