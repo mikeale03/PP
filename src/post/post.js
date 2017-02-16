@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Post.scss';
+import './post.scss';
 
 export default class Items extends React.Component {
     render(){

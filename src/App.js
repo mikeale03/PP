@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Items from './Items/Items.js';
-import Post from './Post/post.js';
-import Search from './Search/search.js';
+import Items from './items/items.js';
+import Post from './post/post.js';
+import Search from './search/search.js';
 import logo from './logo.svg';
 // import './App.css';
-import './App.scss';
+import './app.scss';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 class App extends Component {
