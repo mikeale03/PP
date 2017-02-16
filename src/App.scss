@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  border: 1px solid red;
 }
 
 .App-header img {
@@ -21,4 +22,9 @@ h2 {
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.blue {
+  height: 100px;
+  border: 1px solid blue;
 }
