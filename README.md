@@ -1,6 +1,16 @@
 <<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+## What is the Pair Programming app about? and what not?
+
+- its about people finding eachother online to pair program. By sharing gittername in each item, someone else can find you on gitter
+- the goal is that people with same lvl can pair on the same bonfire or zipline.
+
+- the goal is NOT to build a app like codepen, coderpad
+- also not a chat, people can chat on gitter, slack or anywhere else
+
+
+
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 

@@ -1,3 +1,95 @@
 .items {
   background: blue;
+  overflow-y: scroll;
 }
+
+.items div {
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+}
+
+.item {
+  background: green;
+  border: 1px solid red;
+  color: white;
+  margin: 10px;
+  height: 100px;
+  width: 40vw;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.item p {
+  position: relative;
+  top: -30px;
+}
+
+
+/* the POF star: */
+
+$sizeBase: 50;
+
+#star-five {
+  margin: $sizeBase * 0.5px;
+  margin-left: 2vw;
+  position: relative;
+  top: 30px;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-right:  $sizeBase * 1px solid transparent;
+  border-bottom: $sizeBase * 0.7px  solid red;
+  border-left:   $sizeBase * 1px solid transparent;
+  //-moz-transform:    rotate(35deg);
+  //-webkit-transform: rotate(35deg);
+  //-ms-transform:     rotate(35deg);
+  //-o-transform:      rotate(35deg);
+}
+#star-five:before {
+  border-bottom: $sizeBase * 0.8px solid red;
+  border-left: $sizeBase * 0.3px solid transparent;
+  border-right: $sizeBase * 0.3px solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: $sizeBase * -0.45px;
+  left: $sizeBase * -0.65px;
+  display: block;
+  color: blue;
+  content: '';
+  -webkit-transform: rotate(-35deg);
+  -moz-transform:    rotate(-35deg);
+  -ms-transform:     rotate(-35deg);
+  -o-transform:      rotate(-35deg);
+
+}
+#star-five:after {
+  position: absolute;
+  display: block;
+  top: $sizeBase * 0.03px;
+  left: $sizeBase * -1.05px;
+  width: 0px;
+  height: 0px;
+  border-right: $sizeBase * 1px solid transparent;
+  border-bottom: $sizeBase * 0.7px solid red;
+  border-left: $sizeBase * 1px solid transparent;
+  -webkit-transform: rotate(-70deg);
+  -moz-transform:    rotate(-70deg);
+  -ms-transform:     rotate(-70deg);
+  -o-transform:      rotate(-70deg);
+  content: '';
+}
+
+.child {
+  position: relative;
+  z-index: 1;
+  top: $sizeBase * 0.28px;
+  left: $sizeBase * -0.22px;
+  color: white;
+  font-size: $sizeBase * 0.2px;
+  letter-spacing: 1px;
+}
+
+/* end of star */

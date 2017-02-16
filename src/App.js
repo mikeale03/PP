@@ -3,8 +3,7 @@ import Items from './items/items.js';
 import Post from './post/post.js';
 import Search from './search/search.js';
 import logo from './logo.svg';
-// import './App.css';
-import './app.scss';
+import './App.scss';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 class App extends Component {
@@ -17,7 +16,7 @@ class App extends Component {
                     <img src={logo} alt="logo" />
                 </div>
                 <div className="mainApp">
-                    <Items niceProp={'ItemProps'} />
+                    <Items items={testInput} />
                     <div>
                         <Post niceProp={'POSTProps'} />
                         <Search niceProp={'SEARCHProps'} />
@@ -29,3 +28,106 @@ class App extends Component {
     }
 
 export default App;
+
+let testInput = [
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    },
+    {
+        bzip: 'roman numbers!',
+        gittername: 'face gitter name for test',
+        timeframe: new Date()
+    }
+];
