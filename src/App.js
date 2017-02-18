@@ -32,102 +32,58 @@ export default App;
 let testInput = [
     {
         bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
+        gittername: 'fake gitter name for test',
         timeframe: new Date()
     },
     {
         bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
+        gittername: 'fake gitter name for test',
         timeframe: new Date()
     },
     {
         bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
+        gittername: 'fake gitter name for test',
         timeframe: new Date()
     },
     {
         bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
+        gittername: 'fake gitter name for test',
         timeframe: new Date()
     },
     {
         bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
+        gittername: 'fake gitter name for test',
         timeframe: new Date()
     },
     {
         bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
+        gittername: 'fake gitter name for test',
         timeframe: new Date()
     },
     {
         bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
+        gittername: 'fake gitter name for test',
         timeframe: new Date()
     },
     {
         bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
+        gittername: 'fake gitter name for test',
         timeframe: new Date()
     },
     {
         bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
+        gittername: 'fake gitter name for test',
         timeframe: new Date()
     },
     {
         bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
+        gittername: 'fake gitter name for test',
         timeframe: new Date()
     },
     {
         bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
+        gittername: 'fake gitter name for test',
         timeframe: new Date()
     },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'face gitter name for test',
-        timeframe: new Date()
-    }
+
 ];
