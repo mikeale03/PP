@@ -1,0 +1,66 @@
+
+
+class All extends React.Component {
+    constructor(){
+        super();
+        this.handlePost = this.handlePost.bind(this);
+        this.state = {
+            items: []
+        }
+    }
+
+    componentDidMount(){
+        let that = this;
+        axios.get('/data')
+            .then(function (response) {
+                console.log('hi from axiox.get in comp All');
+                console.log(response);
+                that.setState({
+                    items: response.data.store
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    componentDidMount(){
+        let that = this;
+        axios.get('/data')
+            .then(function (response) {
+                console.log('hi from axiox.get in comp All');
+                console.log(response);
+                that.setState({
+                    items: response.data.store
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    handlePost(item){
+        let that = this;
+        console.log('handlePost in component Item was triggert');
+        axios({
+            method: 'post',
+            url: '/newItem',
+            data: item})
+            .then(function (response) {
+                console.log(response);
+                that.setState({ items: response.data });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    render(){
+        return (
+            <div>
+                <MyForm handlePost={this.handlePost} />
+                <Item items={this.state.items} />
+            </div>
+        )
+    }
+}

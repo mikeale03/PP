@@ -12,7 +12,7 @@ export default class Items extends React.Component {
                 <div>
                     {this.props.items.map(function(v, i){
                         return (
-                            <Item v={v} i={i} />
+                            <Item v={v} key={i} />
                         )
                     })}
                 </div>
@@ -23,11 +23,9 @@ export default class Items extends React.Component {
 
 const Item = (props) => {
     let randomStarTwist = Math.random() * 50 * (Math.random() > 0.5 ? 1 : -1);
-    console.log(randomStarTwist);
     let twist = {
         transform: "rotate(" + randomStarTwist + "deg)"
     };
-    console.log(twist);
     return (
         <div className="item" key={props.i}>
             <div id="star-five" style={ twist }>

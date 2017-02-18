@@ -13,7 +13,7 @@ class App extends Component {
                 <div className="App-header">
                     <img src={logo} alt="logo" />
                     <h2>Welcome! Go find a pair-programming-partner!</h2>
-                    <img src={logo} alt="logo" />
+                    {/*<img src={logo} alt="logo" />*/}
                 </div>
                 <div className="mainApp">
                     <Items items={testInput} />
