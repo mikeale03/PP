@@ -6,6 +6,7 @@ import logo from './logo.svg';
 import './App.scss';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
+
 class App extends Component {
     render() {
         return (
@@ -16,7 +17,7 @@ class App extends Component {
                     {/*<img src={logo} alt="logo" />*/}
                 </div>
                 <div className="mainApp">
-                    <Items items={testInput} />
+                    <Items />
                     <div>
                         <Post niceProp={'POSTProps'} />
                         <Search niceProp={'SEARCHProps'} />
@@ -28,62 +29,3 @@ class App extends Component {
     }
 
 export default App;
-
-let testInput = [
-    {
-        bzip: 'roman numbers!',
-        gittername: 'fake gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'fake gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'fake gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'fake gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'fake gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'fake gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'fake gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'fake gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'fake gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'fake gitter name for test',
-        timeframe: new Date()
-    },
-    {
-        bzip: 'roman numbers!',
-        gittername: 'fake gitter name for test',
-        timeframe: new Date()
-    },
-
-];
