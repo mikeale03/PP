@@ -8,6 +8,9 @@ import './App.scss';
 
 
 class App extends Component {
+    componentDidMount() {
+      //this.props.fetchGames();
+    }
     render() {
         return (
             <div className="App">

@@ -1,8 +1,8 @@
 import React from 'react';
 import './Items.scss';
 import axios from 'axios';
-import {store} from '../post/post.js';
-import {initialData} from '../post/post.js';
+import {store} from '../post/Post.js';
+import {initialData} from '../post/Post.js';
 
 console.log(store);
 

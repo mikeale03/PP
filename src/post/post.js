@@ -76,6 +76,7 @@ export default class Post extends React.Component {
             url: '/newItem',
             data: this.state.newItem})
             .then(function (response) {
+              console.log(response.data);
                 that.setState({ items: response.data });
             })
             .catch(function (error) {
