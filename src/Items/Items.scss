@@ -10,13 +10,13 @@
 }
 
 .items .itemHoverTwist {
-  width: 40vw;
+  width: 30vw;
   height: 100px;
   margin: 5px;
 }
 
 .items .itemHoverTwist:hover > .item {
-  transform: rotate(380deg);
+  transform: rotate(380deg) scale(1.5, 1.5);
 }
 
 .item {
@@ -24,11 +24,11 @@
   border: 1px solid red;
   color: white;
   height: 100px;
-  width: 40vw;
+  width: 30vw;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  transition: all 1s;
+  transition: all 0.5s ease-in;
 }
 
 .item p {
