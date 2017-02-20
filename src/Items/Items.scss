@@ -3,10 +3,19 @@
   overflow-y: scroll;
 }
 
-.items div {
+.items .itemWrap {
   display: flex;
   flex-flow: column nowrap;
   align-content: center;
+}
+
+.items .itemHoverTwist {
+  border: 10px solid red;
+  height: 100px;
+  width: 300px;
+  :hover {
+    transform: scale2d(1.5, 1.5, 6) rotate(380deg);
+  }
 }
 
 .item {
@@ -25,7 +34,6 @@
   position: relative;
   top: -30px;
 }
-
 
 /* the POF star: */
 

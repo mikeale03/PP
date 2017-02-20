@@ -1,6 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './items.scss';
 import axios from 'axios';
+import {store} from '../post/post.js';
+import {initialData} from '../post/post.js';
+
+console.log(store);
 
 export default class Items extends React.Component {
     constructor(){
@@ -14,21 +18,22 @@ export default class Items extends React.Component {
         let that = this;
         axios.get('/data')
             .then(function (response) {
-                console.log('hi from axiox.get in comp All');
-                console.log(response);
-                that.setState({
-                    items: response.data.store
-                })
+                store.dispatch(initialData(response.data.store));
             })
             .catch(function (error) {
                 console.log(error);
             });
+        store.subscribe(function(){
+            that.setState({
+                items: store.getState()
+            });
+        });
     }
 
     render(){
         return (
             <div className="items">
-                <div>
+                <div className="itemWrap">
                     {this.state.items.map(function(v, i){
                         return (
                             <Item v={v} key={i} />
@@ -41,19 +46,22 @@ export default class Items extends React.Component {
 }
 
 const Item = (props) => {
-    let randomStarTwist = Math.random() * 50 * (Math.random() > 0.5 ? 1 : -1);
+    let randomStarTwist = Math.random() * 50 *
+        (Math.random() > 0.5 ? 1 : -1);
     let twist = {
         transform: "rotate(" + randomStarTwist + "deg)"
     };
     return (
-        <div className="item" key={props.i}>
-            <div id="star-five" style={ twist }>
-                <div className="child">
-                    POF!
+        <div className="itemHoverTwist" key={props.i}>
+            <div className="item" >
+                <div id="star-five" style={ twist }>
+                    <div className="child">
+                        POF!
+                    </div>
                 </div>
+                <p>{props.v.bzip}</p>
+                <p>{props.v.gittername}</p>
             </div>
-            <p>{props.v.bzip}</p>
-            <p>{props.v.gittername}</p>
         </div>
     )
 };

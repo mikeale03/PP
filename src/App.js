@@ -4,7 +4,7 @@ import Post from './post/post.js';
 import Search from './search/search.js';
 import logo from './logo.svg';
 import './App.scss';
-import { Navbar, Jumbotron, Button } from 'react-bootstrap';
+// import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 
 class App extends Component {

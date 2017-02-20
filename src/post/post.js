@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import './post.scss';
 import axios from 'axios';
-import redux from 'redux';
+import * as redux from "redux";
 
 // actions
 const ADDITEM = {    type: 'ADD'    };
+const ADDARR = {     type: "ADDARR" };
 
 // actionCreator
 const addItemAC = (message) => {
     return {
         type: ADDITEM,
         message
+    }
+};
+
+export const initialData = (messagesArr) => {
+    return {
+        type: ADDARR,
+        messagesArr
     }
 };
 
@@ -22,21 +30,19 @@ const defaultState = {
 const reducer = (state = defaultState, action) => {
     switch(action.type){
         case ADDITEM: return [action.message, ...state];
+        case ADDARR: return [...action.messagesArr];
         default: return state;
     }
 };
 
 // store
-const store = redux.createStore(reducer);
+export const store = redux.createStore(reducer);
 
-store.subscribe(console.log('the state: '));
-store.subscribe(console.log(store.getState()));
-console.log('about to add!');
-store.dispatch(addItemAC({
-    bzip: 'second', gittername: 'mrDispatch'
-}));
+store.subscribe(function(){
+    console.log(store.getState())
+});
 
-console.log(store.getState());
+
 
 let bzip = ["aone", "aone", "aone", "aone", "aone",
     "aone", "aone", "aone", "aone", "aone", "aone",
@@ -53,7 +59,8 @@ export default class Post extends React.Component {
             newItem: {
                 bzip: 'this is text from initial state',
                 gittername: 'gittername'
-            }
+            },
+            length: 0
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -63,12 +70,12 @@ export default class Post extends React.Component {
 
     handleSubmit(){
         let that = this;
+        store.dispatch(addItemAC(this.state.newItem));
         axios({
             method: 'post',
             url: '/newItem',
             data: this.state.newItem})
             .then(function (response) {
-                // console.log(response);
                 that.setState({ items: response.data });
             })
             .catch(function (error) {
@@ -81,6 +88,11 @@ export default class Post extends React.Component {
                 gittername: ''
             }
         });
+        store.subscribe(function(){
+            that.setState({
+                length: store.getState().length
+            });
+        });
         document.getElementById('gittername').focus();
     }
 
@@ -89,11 +101,9 @@ export default class Post extends React.Component {
         let value = e.target.value;
         let newItem = Object.assign({}, this.state.newItem, {[name]: value});
         this.setState({  newItem  });
-        console.log(this.state);
     }
 
     handleChangeBzip(value){
-        console.log(value);
         let newItem = Object.assign({}, this.state.newItem, {bzip: value});
         this.setState({  newItem  });
     }
@@ -101,6 +111,7 @@ export default class Post extends React.Component {
     render(){
         return (
             <div className="post">
+                {this.state.length}
                 <form className="itemForm">
                     <div className="inputWrappers">
                         <SelectBzip list={bzip}
@@ -111,7 +122,6 @@ export default class Post extends React.Component {
                                placeholder="gittername"
                                value={this.state.newItem.gittername}
                                onChange={this.handleInputChange}
-
                         />
                     </div>
                     <div className="inputWrappers">
@@ -148,19 +158,10 @@ class SelectBzip extends Component {
     }
 
     handleInputChange(e){
-        let that = this;
-        function b(){
-            that.props.handleChangeBzip(that.state.bzip);
-        }
-        function a(b){
-            that.setState({
-                bzip: e.target.value.toLowerCase(),
-                visibility: 'block'
-            });
-            b();
-        }
-        a(b);
-        console.log(this.state.bzip);
+        this.setState({
+            bzip: e.target.value.toLowerCase(),
+            visibility: 'block'
+        });
     }
 
     pickBzip(e){
@@ -169,6 +170,10 @@ class SelectBzip extends Component {
             visibility: 'none'
         });
         this.props.handleChangeBzip(e.target.innerHTML);
+    }
+
+    looseFocus = () => {
+        this.props.handleChangeBzip(this.state.bzip);
     }
 
     render(){
@@ -192,7 +197,9 @@ class SelectBzip extends Component {
                 <p className="postInputs">bonfire / zipline:</p>
                 <div className="listWrap">
                 <div className="list">
-                    <input name="bzip" type="text" value={this.state.bzip}
+                    <input name="bzip" type="text"
+                           onBlur={this.looseFocus}
+                           value={this.state.bzip}
                            onChange={this.handleInputChange}
                            autoComplete="off" />
                     <ul style={{ display: this.state.visibility }}>
