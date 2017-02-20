@@ -6,28 +6,29 @@
 .items .itemWrap {
   display: flex;
   flex-flow: column nowrap;
-  align-content: center;
+  align-items: center;
 }
 
 .items .itemHoverTwist {
-  border: 10px solid red;
+  width: 40vw;
   height: 100px;
-  width: 300px;
-  :hover {
-    transform: scale2d(1.5, 1.5, 6) rotate(380deg);
-  }
+  margin: 5px;
+}
+
+.items .itemHoverTwist:hover > .item {
+  transform: rotate(380deg);
 }
 
 .item {
   background: green;
   border: 1px solid red;
   color: white;
-  margin: 10px;
   height: 100px;
   width: 40vw;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  transition: all 1s;
 }
 
 .item p {
