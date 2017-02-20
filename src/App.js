@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Items from './items/items.js';
-import Post from './post/post.js';
-import Search from './search/search.js';
+import Items from './items/Items.js';
+import Post from './post/Post.js';
+import Search from './search/Search.js';
 import logo from './logo.svg';
 import './App.scss';
 // import { Navbar, Jumbotron, Button } from 'react-bootstrap';

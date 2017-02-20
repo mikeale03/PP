@@ -1,5 +1,5 @@
 import React from 'react';
-import './items.scss';
+import './Items.scss';
 import axios from 'axios';
 import {store} from '../post/post.js';
 import {initialData} from '../post/post.js';
@@ -65,6 +65,3 @@ const Item = (props) => {
         </div>
     )
 };
-
-
-

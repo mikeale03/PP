@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './post.scss';
+import './Post.scss';
 import axios from 'axios';
 import * as redux from "redux";
 
@@ -211,4 +211,3 @@ class SelectBzip extends Component {
         )
     }
 }
-

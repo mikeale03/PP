@@ -1,5 +1,5 @@
 import React from 'react';
-import './search.scss';
+import './Search.scss';
 
 export default class Search extends React.Component {
     render(){
