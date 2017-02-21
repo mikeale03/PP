@@ -11,7 +11,8 @@ export default class Items extends React.Component {
     constructor(){
         super();
         this.state = {
-            items: []
+            items: [],
+            searchText: '.'
         };
     }
 
@@ -25,17 +26,23 @@ export default class Items extends React.Component {
                 console.log(error);
             });
         store.subscribe(function(){
+            let storeState = store.getState();
             that.setState({
-                items: store.getState()
+                items: storeState.items,
+                searchText: storeState.searchText
             });
         });
     }
 
     render(){
+        let searchText = new RegExp(this.state.searchText);
+        console.log(searchText);
         return (
             <div className="items">
                 <div className="itemWrap">
-                    {this.state.items.map(function(v, i){
+                    {this.state.items.filter(function(v){
+                        return searchText.test(v.bzip);
+                    }).map(function(v, i){
                         return (
                             <Item v={v} key={i} />
                         )
@@ -58,13 +65,13 @@ class Item extends Component {
         this.setState({
             info: 'block'
         });
-    }
+    };
 
     hideInfo = () => {
         this.setState({
             info: 'none'
         });
-    }
+    };
 
     render(){
         let showInfo = { display: this.state.info }
@@ -86,7 +93,7 @@ class Item extends Component {
                     </div>
                     <p>{this.props.v.bzip}</p>
                     <p style={ showInfo }>{this.props.v.gittername}</p>
-                    <p style={ showInfo }>{this.props.v.bzip}</p>
+                    <p style={ showInfo }>{this.props.v.time}</p>
                 </div>
             </div>
         )

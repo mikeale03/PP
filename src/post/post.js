@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './post.scss';
 import axios from 'axios';
 import * as redux from "redux";
+import { SEARCH } from '../search/Search.js';
 
 // actions
 const ADDITEM = {    type: 'ADD'    };
@@ -23,14 +24,17 @@ export const initialData = (messagesArr) => {
 };
 
 const defaultState = {
-    items: [{bzip: 'Roman', gittername: 'gittername'}]
+    items: [{bzip: 'Roman', gittername: 'gittername'}],
+    searchText: ''
 };
+
 
 // reducer
 const reducer = (state = defaultState, action) => {
     switch(action.type){
-        case ADDITEM: return [action.message, ...state];
-        case ADDARR: return [...action.messagesArr];
+        case ADDITEM: return Object.assign({}, state, {items: [...state.items, action.message]});
+        case ADDARR: return Object.assign({}, state, {items: [...state.items, action.messagesArr]});
+        case SEARCH: return Object.assign({}, state, {searchText: action.searchText} );
         default: return state;
     }
 };
