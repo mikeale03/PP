@@ -35,8 +35,7 @@ export default class Items extends React.Component {
     }
 
     render(){
-        let searchText = new RegExp(this.state.searchText);
-        console.log(searchText);
+        let searchText = new RegExp(this.state.searchText, 'i');
         return (
             <div className="items">
                 <div className="itemWrap">
@@ -44,7 +43,7 @@ export default class Items extends React.Component {
                         return searchText.test(v.bzip);
                     }).map(function(v, i){
                         return (
-                            <Item v={v} key={i} />
+                            <Item v={v} key={i} i={i}/>
                         )
                     })}
                 </div>
@@ -80,20 +79,30 @@ class Item extends Component {
         let twist = {
             transform: "rotate(" + randomStarTwist + "deg)"
         };
+        let leftRight = this.props.i%2 ?
+            { "justifyContent": "flex-start"} :
+            { "justifyContent": "flex-end"};
+        let twistItem = this.props.i%2 == 0 ?
+            { "transform": "rotate(20deg"} :
+            { "transform": "rotate(-20deg" };
         return (
             <div className="itemHoverTwist" key={this.props.i}
                  onMouseEnter={this.showInfo}
                  onMouseLeave={this.hideInfo}
+                 style={ leftRight }
             >
-                <div className="item" >
+                <div style={twistItem}>
+                <div className="item">
                     <div id="star-five" style={ twist }>
                         <div className="child">
                             POF!
                         </div>
                     </div>
                     <p>{this.props.v.bzip}</p>
+                    <img src={circle} />
                     <p style={ showInfo }>{this.props.v.gittername}</p>
                     <p style={ showInfo }>{this.props.v.time}</p>
+                </div>
                 </div>
             </div>
         )

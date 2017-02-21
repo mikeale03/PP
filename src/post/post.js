@@ -33,7 +33,7 @@ const defaultState = {
 const reducer = (state = defaultState, action) => {
     switch(action.type){
         case ADDITEM: return Object.assign({}, state, {items: [...state.items, action.message]});
-        case ADDARR: return Object.assign({}, state, {items: [...state.items, action.messagesArr]});
+        case ADDARR: return Object.assign({}, state, {items: [...state.items, ...action.messagesArr]});
         case SEARCH: return Object.assign({}, state, {searchText: action.searchText} );
         default: return state;
     }
@@ -43,7 +43,8 @@ const reducer = (state = defaultState, action) => {
 export const store = redux.createStore(reducer);
 
 store.subscribe(function(){
-    console.log(store.getState())
+    // console.log('the state inside store');
+    // console.log(store.getState())
 });
 
 
@@ -73,31 +74,35 @@ export default class Post extends React.Component {
         this.handleChangeBzip = this.handleChangeBzip.bind(this);
     }
 
+    componentDidMount(){
+        let that = this;
+        store.subscribe(function(){
+            that.setState({
+                length: store.getState().items.length
+            });
+        });
+    }
+
     handleSubmit(){
         let that = this;
         store.dispatch(addItemAC(this.state.newItem));
         axios({
             method: 'post',
             url: '/newItem',
-            data: this.state.newItem})
-            .then(function (response) {
-              console.log(response.data);
-                that.setState({ items: response.data });
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
+            data: this.state.newItem
+        })
+        .then(function (response) {
+          console.log(response.data);
+            that.setState({ items: response.data });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
         this.setState({
             newItem: {
                 bzip: '',
                 gittername: ''
             }
-        });
-        store.subscribe(function(){
-            that.setState({
-                length: store.getState().length
-            });
         });
         document.getElementById('gittername').focus();
     }
@@ -180,7 +185,7 @@ class SelectBzip extends Component {
 
     looseFocus = () => {
         this.props.handleChangeBzip(this.state.bzip);
-    }
+    };
 
     render(){
         let that = this;

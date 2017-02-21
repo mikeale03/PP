@@ -15,7 +15,7 @@ class App extends Component {
         return (
             <div className="App">
                 <div className="App-header">
-                    <img src={logo} alt="logo" />
+                    <img id="logo" src={logo} alt="logo" />
                     <h2>Welcome! Go find a pair-programming-partner!</h2>
                     {/*<img src={logo} alt="logo" />*/}
                 </div>

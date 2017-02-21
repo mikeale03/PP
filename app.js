@@ -3,7 +3,6 @@ let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
 
-
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -16,7 +15,8 @@ let store = [{
 }];
 */
 
-const MongoClient = require('mongodb').MongoClient
+const MongoClient = require('mongodb').MongoClient;
+console.log(MongoClient);
 
 MongoClient.connect('mongodb://fcc-pp:codepair@ds151008.mlab.com:51008/mongotest03', (err, db) => {
   if(err) {
@@ -28,8 +28,9 @@ MongoClient.connect('mongodb://fcc-pp:codepair@ds151008.mlab.com:51008/mongotest
     console.log('message from server!');
     db.collection('pp').insertOne(req.body);
     db.collection('pp').find().toArray(function (err, result) {
-      if (err) throw err
+      if (err) throw err;
       res.send({ store: result });
+      console.log('result');
       console.log(result);
     });
     
