@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Post.scss';
+import './post.scss';
 import axios from 'axios';
 import * as redux from "redux";
 

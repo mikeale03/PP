@@ -1,5 +1,5 @@
-import React from 'react';
-import './Items.scss';
+import React, { Component }from 'react';
+import './items.scss';
 import axios from 'axios';
 import {store} from '../post/Post.js';
 import {initialData} from '../post/Post.js';
@@ -84,7 +84,6 @@ class Item extends Component {
                             POF!
                         </div>
                     </div>
-<img src={circle} />
                     <p>{this.props.v.bzip}</p>
                     <p style={ showInfo }>{this.props.v.gittername}</p>
                     <p style={ showInfo }>{this.props.v.bzip}</p>
