@@ -58,7 +58,8 @@ export default class Post extends React.Component {
         this.state = {
             newItem: {
                 bzip: 'this is text from initial state',
-                gittername: 'gittername'
+                gittername: 'gittername',
+                time: "I'm starting right now!"
             },
             length: 0
         };
@@ -127,7 +128,7 @@ export default class Post extends React.Component {
                     </div>
                     <div className="inputWrappers">
                         <p className="postInputs">When:</p>
-                        <select name="when">
+                        <select name="when" onChange={this.handleInputChange}>
                             <option value="I'm starting right now!">
                                 I am starting right now, join me!
                             </option>

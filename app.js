@@ -9,10 +9,12 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-/*let store = [{
+/*
+let store = [{
     bzip: 'this is the data from the server',
     gittername: 'mike',
-}];*/
+}];
+*/
 
 const MongoClient = require('mongodb').MongoClient
 
@@ -30,14 +32,16 @@ MongoClient.connect('mongodb://fcc-pp:codepair@ds151008.mlab.com:51008/mongotest
       res.send({ store: result });
       console.log(result);
     });
+    
     /*
-      res.send({ store: result });
-    })
-      console.log(req.body);
-      console.log('hi from post');
-      store.push(req.body);
-      console.log(store);
-      res.send(store);*/
+        res.send({ store: result });
+      })
+        console.log(req.body);
+        console.log('hi from post');
+        store.push(req.body);
+        console.log(store);
+        res.send(store);
+    */
   });
 
   app.get('/data', function (req, res) {
@@ -50,6 +54,5 @@ MongoClient.connect('mongodb://fcc-pp:codepair@ds151008.mlab.com:51008/mongotest
 
   app.listen(4000, () => {
       console.log('listening on 4000');
-    }
-  );
-})
+  });
+});
