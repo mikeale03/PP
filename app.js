@@ -20,7 +20,7 @@ app.get('/hi', (req, res) => {
 });
 
 app.post('/newItem', function (req, res) {
-    console.log(req.body);
+    console.log(req.body.bzip);
     console.log('hi from post');
     store.push(req.body);
     console.log(store);
