@@ -1,11 +1,13 @@
+$backgroundColor: #765656;
+
 .post {
-  background: green;
+  background: $backgroundColor;
   height: 40vh;
-  padding: 5px;
+  padding: 10px;
 }
 
 .inputWrappers {
-  margin: 30px;
+  //position: absolute;
 }
 
 .postInputs {
@@ -28,11 +30,11 @@
   justify-content: center;
 }
 
-ul {
+.post ul {
   display: inline-block;
   position: absolute;
   top: 20px;
-  background: purple;
+  background: white;
   width: 200px;
   margin-right: auto;
 }
@@ -41,3 +43,42 @@ li {
   list-style-type: none;
 }
 
+.post img {
+  width: 80%;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.post form {
+  width: 80%;
+  min-width: 280px;
+  max-width: 380px;
+  margin: auto;
+  position: relative;
+  top: -120px;
+}
+
+
+.post #submitButton {
+  position: relative;
+  top: 60px;
+}
+
+.post input, select {
+  border: none;
+  background-color: $backgroundColor;
+}
+
+.post #submitButton {
+  border: 3px solid white;
+  border-radius: 25px;
+  width: 120px;
+  height: 50px;
+  &:hover {
+    background: white;
+  }
+  &:active {
+    background: $backgroundColor;
+    outline: none;
+  }
+}

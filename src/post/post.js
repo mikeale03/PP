@@ -3,6 +3,7 @@ import './post.scss';
 import axios from 'axios';
 import * as redux from "redux";
 import { SEARCH } from '../search/Search.js';
+import circle from '../images/circle.png';
 
 // actions
 const ADDITEM = {    type: 'ADD'    };
@@ -41,13 +42,6 @@ const reducer = (state = defaultState, action) => {
 
 // store
 export const store = redux.createStore(reducer);
-
-store.subscribe(function(){
-    // console.log('the state inside store');
-    // console.log(store.getState())
-});
-
-
 
 let bzip = ["aone", "aone", "aone", "aone", "aone",
     "aone", "aone", "aone", "aone", "aone", "aone",
@@ -122,7 +116,7 @@ export default class Post extends React.Component {
     render(){
         return (
             <div className="post">
-                {this.state.length}
+                <img src={circle} alt="ppItem" />
                 <form className="itemForm">
                     <div className="inputWrappers">
                         <SelectBzip list={bzip}

@@ -41,7 +41,7 @@ export default class Items extends React.Component {
                 <div className="itemWrap">
                     {this.state.items.filter(function(v){
                         return searchText.test(v.bzip);
-                    }).map(function(v, i){
+                    }).reverse().map(function(v, i){
                         return (
                             <Item v={v} key={i} i={i}/>
                         )
@@ -54,7 +54,7 @@ export default class Items extends React.Component {
 
 class Item extends Component {
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             info: 'none'
         }
@@ -82,7 +82,7 @@ class Item extends Component {
         let leftRight = this.props.i%2 ?
             { "justifyContent": "flex-start"} :
             { "justifyContent": "flex-end"};
-        let twistItem = this.props.i%2 == 0 ?
+        let twistItem = this.props.i%2 === 0 ?
             { "transform": "rotate(20deg"} :
             { "transform": "rotate(-20deg" };
         return (
@@ -99,7 +99,7 @@ class Item extends Component {
                         </div>
                     </div>
                     <p>{this.props.v.bzip}</p>
-                    <img src={circle} />
+                    <img src={circle} alt="ppItem"/>
                     <p style={ showInfo }>{this.props.v.gittername}</p>
                     <p style={ showInfo }>{this.props.v.time}</p>
                 </div>
