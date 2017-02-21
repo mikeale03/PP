@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './post.scss';
+import './Post.scss';
 import axios from 'axios';
 import * as redux from "redux";
 
@@ -77,6 +77,7 @@ export default class Post extends React.Component {
             url: '/newItem',
             data: this.state.newItem})
             .then(function (response) {
+              console.log(response.data);
                 that.setState({ items: response.data });
             })
             .catch(function (error) {
@@ -212,4 +213,3 @@ class SelectBzip extends Component {
         )
     }
 }
-
