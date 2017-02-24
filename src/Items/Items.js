@@ -18,8 +18,9 @@ export default class Items extends React.Component {
 
     componentDidMount(){
         let that = this;
-        axios.get('/data')
+        axios.get('/items')
             .then(function (response) {
+                console.log(response.data.store);
                 store.dispatch(initialData(response.data.store));
             })
             .catch(function (error) {
