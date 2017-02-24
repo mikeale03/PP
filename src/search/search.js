@@ -26,7 +26,6 @@ export default class Search extends React.Component {
         var that = this;
         this.setState({  searchText: e.target.value  });
         setTimeout(function(){
-
             store.dispatch(searchItems(that.state.searchText));
         }, 100);
 
