@@ -82,7 +82,7 @@ export default class Post extends React.Component {
         store.dispatch(addItemAC(this.state.newItem));
         axios({
             method: 'post',
-            url: '/newItem',
+            url: '/items/create',
             data: this.state.newItem
         })
         .then(function (response) {
@@ -123,7 +123,7 @@ export default class Post extends React.Component {
                                     handleChangeBzip={this.handleChangeBzip} />
                     </div>
                     <div className="inputWrappers">
-                        <input name="gittername" id="gittername" type="text"
+                        <input name="gittername" id="gittername" type="text" 
                                placeholder="gittername"
                                value={this.state.newItem.gittername}
                                onChange={this.handleInputChange}
