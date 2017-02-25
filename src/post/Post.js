@@ -3,11 +3,12 @@ import './post.scss';
 import axios from 'axios';
 import * as redux from "redux";
 import { SEARCH } from '../search/Search.js';
-import circle from '../images/circle.png';
+// import circle from '../images/circle.png';
 
 // actions
-const ADDITEM = {    type: 'ADD'    };
-const ADDARR = {     type: "ADDARR" };
+const ADDITEM = {    type: 'ADD'     };
+const ADDARR = {     type: "ADDARR"  };
+const ADDCHAL = {    type: "ADDCHAL" };
 
 // actionCreator
 const addItemAC = (message) => {
@@ -24,18 +25,29 @@ export const initialData = (messagesArr) => {
     }
 };
 
+export const initialChallenges = (challengeList) => {
+    return {
+        type: ADDCHAL,
+        challengeList
+    }
+};
+
 const defaultState = {
     items: [{bzip: 'Roman', gittername: 'gittername'}],
-    searchText: ''
+    searchText: '',
+    challengeList: []
 };
 
 
 // reducer
 const reducer = (state = defaultState, action) => {
     switch(action.type){
-        case ADDITEM: return Object.assign({}, state, {items: [...state.items, action.message]});
+        case ADDITEM: return Object.assign({}, state,
+            {items: [...state.items, action.message]});
         case ADDARR: return Object.assign({}, state, {items: [...state.items, ...action.messagesArr]});
-        case SEARCH: return Object.assign({}, state, {searchText: action.searchText} );
+        case SEARCH: return Object.assign({}, state,
+            {searchText: action.searchText} );
+        case ADDCHAL: return Object.assign({}, state, {challengeList: action.challengeList});
         default: return state;
     }
 };
@@ -43,22 +55,19 @@ const reducer = (state = defaultState, action) => {
 // store
 export const store = redux.createStore(reducer);
 
-let bzip = ["aone", "aone", "aone", "aone", "aone",
-    "aone", "aone", "aone", "aone", "aone", "aone",
-    "aone", "aone", "aone", "aone", "aone", "aone",
-    "aone", "aone", "aone", "aone", "aone", "atwo",
-    "athree", "afour", "afive", "asix",
-    "asevenpppppppppppppppppppppppp", "aeight", "anine", "aten"];
-
+// post component
 
 export default class Post extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             newItem: {
+                platform: 'FCC challenge',
                 bzip: 'this is text from initial state',
-                gittername: 'gittername',
-                time: "I'm starting right now!"
+                channel: '',
+                username: '',
+                time: "I'm starting right now!",
+                freeText: ''
             },
             length: 0
         };
@@ -94,11 +103,15 @@ export default class Post extends React.Component {
         });
         this.setState({
             newItem: {
-                bzip: '',
-                gittername: ''
+                platform: 'FCC challenge',
+                bzip: 'this is text from initial state',
+                channel: '',
+                username: '',
+                time: "I'm starting right now!",
+                freeText: ''
             }
         });
-        document.getElementById('gittername').focus();
+        document.getElementById('platform').focus();
     }
 
     handleInputChange(e){
@@ -106,6 +119,10 @@ export default class Post extends React.Component {
         let value = e.target.value;
         let newItem = Object.assign({}, this.state.newItem, {[name]: value});
         this.setState({  newItem  });
+        // let that = this;
+        // setTimeout(function(){
+        //     console.log(that.state.newItem);
+        // }, 50)
     }
 
     handleChangeBzip(value){
@@ -116,22 +133,42 @@ export default class Post extends React.Component {
     render(){
         return (
             <div className="post">
-                <img src={circle} alt="ppItem" />
                 <form className="itemForm">
                     <div className="inputWrappers">
-                        <SelectBzip list={bzip}
-                                    handleChangeBzip={this.handleChangeBzip} />
+                        <p className="postInputs">What would you like to do?</p>
+                        <select name="platform"
+                                onChange={this.handleInputChange}
+                                id="platform">
+                            <option value="FCC challenge">FCC challenge</option>
+                            <option value="FCC project">FCC project</option>
+                            <option value="Codewars !!">Codewars !!</option>
+                        </select>
                     </div>
                     <div className="inputWrappers">
-                        <input name="gittername" id="gittername" type="text" 
-                               placeholder="gittername"
-                               value={this.state.newItem.gittername}
+                        <SelectBzip
+                            handleChangeBzip={this.handleChangeBzip}
+                            what={this.state.newItem.platform}
+                        />
+                    </div>
+                    <div className="inputWrappers">
+                        <p className="postInputs">channel</p>
+                        <input name="channel" id="channel" type="text"
+                               value={this.state.newItem.channel}
                                onChange={this.handleInputChange}
+                               placeholder="gitter / discord / slack / etc"
+                        />
+                    </div>
+                    <div className="inputWrappers">
+                        <p className="postInputs">username</p>
+                        <input name="username" id="username" type="text"
+                               value={this.state.newItem.username}
+                               onChange={this.handleInputChange}
+                               placeholder="username"
                         />
                     </div>
                     <div className="inputWrappers">
                         <p className="postInputs">When:</p>
-                        <select name="when" onChange={this.handleInputChange}>
+                        <select name="time" onChange={this.handleInputChange}>
                             <option value="I'm starting right now!">
                                 I am starting right now, join me!
                             </option>
@@ -142,6 +179,15 @@ export default class Post extends React.Component {
                                 This week, lets schedule!
                             </option>
                         </select>
+                    </div>
+
+                    <div className="inputWrappers">
+                        <p className="postInputs">username</p>
+                        <textarea name="freeText" id="freeText" type="text"
+                               value={this.state.newItem.freeText}
+                               onChange={this.handleInputChange}
+                               placeholder="anything you wanna add...."
+                        />
                     </div>
                     <input id="submitButton" type="button" value="submit"
                            onClick={this.handleSubmit} />
@@ -155,11 +201,21 @@ class SelectBzip extends Component {
     constructor(props){
         super(props);
         this.state = {
+            list: [],
             bzip: '',
             visibility: 'block'
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.pickBzip = this.pickBzip.bind(this);
+    }
+
+    componentDidMount(){
+        let that = this;
+        store.subscribe(function(){
+            that.setState({
+                list: store.getState().challengeList
+            });
+        });
     }
 
     handleInputChange(e){
@@ -183,8 +239,8 @@ class SelectBzip extends Component {
 
     render(){
         let that = this;
-        let datalist = this.props.list.filter(function(v){
-            let regex = new RegExp(that.state.bzip);
+        let datalist = this.state.list.filter(function(v){
+            let regex = new RegExp(that.state.bzip, 'gi');
             if(!that.state.bzip){
                 return false;
             }
@@ -199,7 +255,8 @@ class SelectBzip extends Component {
 
         return(
             <div className="selectBzip">
-                <p className="postInputs">bonfire / zipline:</p>
+                <p className="postInputs">{this.props.what === "Codewars !!" ?
+                    "plz paste link to kata" : "challenge or project:" }</p>
                 <div className="listWrap">
                 <div className="list">
                     <input name="bzip" type="text"

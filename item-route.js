@@ -1,8 +1,10 @@
+'use strict';
 const express = require('express');
 const mongoose = require('mongoose');
 const Item = require('./models/item')
 let route = express.Router();
 
+let part = require('./fccmap.js');
 
 route.delete('/:id', (req, res) => {
   console.log('delete requested!');
@@ -23,11 +25,15 @@ route.delete('/:id', (req, res) => {
   });
 });
 
+
+
 route.get('/', (req, res) => {
     console.log('new item requested!');
     Item.find({}, function (err, result) {
       if (err) throw err;
-      res.send({ store: result });
+      console.log('part is in the game!');
+      console.log(part);
+      res.send({ store: result, challengelist: part });
       console.log('result');
       console.log(result);
     });

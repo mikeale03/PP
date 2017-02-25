@@ -52,6 +52,7 @@
     "axios": "^0.15.3",
     "body-parser": "^1.16.1",
     "bootstrap": "^3.3.7",
+    "cheerio": "^0.22.0",
     "express": "^4.14.1",
     "mongodb": "^2.2.24",
     "mongoose": "^4.8.4",
@@ -59,7 +60,8 @@
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "tinyreq": "^3.2.0"
   },
   "scripts": {
     "start": "node scripts/start.js",

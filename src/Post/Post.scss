@@ -1,14 +1,13 @@
-$backgroundColor: #765656;
+
 
 .post {
-  background: $backgroundColor;
   height: 40vh;
   padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.inputWrappers {
-  //position: absolute;
-}
 
 .postInputs {
   margin: 5px;
@@ -43,42 +42,31 @@ li {
   list-style-type: none;
 }
 
-.post img {
-  width: 80%;
-  min-width: 300px;
+.inputWrappers {
+  padding: 3px;
+  text-align: end;
+  margin-top: 2px;
+}
+
+form {
+  text-align: end;
   max-width: 400px;
 }
 
-.post form {
-  width: 80%;
-  min-width: 280px;
-  max-width: 380px;
-  margin: auto;
-  position: relative;
-  top: -120px;
+input {
+  width: 200px;
 }
 
-
-.post #submitButton {
-  position: relative;
-  top: 60px;
+select{
+  width: 203px;
 }
 
-.post input, select {
-  border: none;
-  background-color: $backgroundColor;
+textarea {
+  width: 202px;
 }
 
 .post #submitButton {
-  border: 3px solid white;
-  border-radius: 25px;
-  width: 120px;
-  height: 50px;
-  &:hover {
-    background: white;
-  }
-  &:active {
-    background: $backgroundColor;
-    outline: none;
-  }
+  position: relative;
+  left: -2px;
+  width: 205px;
 }

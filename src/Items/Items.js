@@ -2,10 +2,10 @@ import React, { Component }from 'react';
 import './items.scss';
 import axios from 'axios';
 import {store} from '../post/Post.js';
-import {initialData} from '../post/Post.js';
-import circle from '../images/circle.png';
+import {initialData, initialChallenges} from '../post/Post.js';
+// import circle from '../images/circle.png';
+// import { Button } from 'react-bootstrap';
 
-console.log(store);
 
 export default class Items extends React.Component {
     constructor(){
@@ -18,14 +18,6 @@ export default class Items extends React.Component {
 
     componentDidMount(){
         let that = this;
-        axios.get('/items')
-            .then(function (response) {
-                console.log(response.data.store);
-                store.dispatch(initialData(response.data.store));
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
         store.subscribe(function(){
             let storeState = store.getState();
             that.setState({
@@ -33,6 +25,15 @@ export default class Items extends React.Component {
                 searchText: storeState.searchText
             });
         });
+        axios.get('/items')
+            .then(function (response) {
+                store.dispatch(initialData(response.data.store));
+                store.dispatch(initialChallenges(response.data.challengelist.default));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
     }
 
     render(){
@@ -57,55 +58,50 @@ class Item extends Component {
     constructor(props){
         super(props);
         this.state = {
-            info: 'none'
+            info: 'none',
+            heightFreeText: 0
         }
+
     }
 
-    showInfo = () => {
-        this.setState({
-            info: 'block'
-        });
-    };
+    toggleFreeText = () =>{
+        if(this.state.heightFreeText){
+            this.setState({ heightFreeText: 0 });
+        } else {
+            this.setState({ heightFreeText: 40 });
+        }
 
-    hideInfo = () => {
-        this.setState({
-            info: 'none'
-        });
-    };
+    }
 
     render(){
-        let showInfo = { display: this.state.info }
-        let randomStarTwist = Math.random() * 50 *
-            (Math.random() > 0.5 ? 1 : -1);
-        let twist = {
-            transform: "rotate(" + randomStarTwist + "deg)"
-        };
-        let leftRight = this.props.i%2 ?
-            { "justifyContent": "flex-start"} :
-            { "justifyContent": "flex-end"};
-        let twistItem = this.props.i%2 === 0 ?
-            { "transform": "rotate(20deg"} :
-            { "transform": "rotate(-20deg" };
+        if(this.props.i === 0){
+            console.log(this.props.v);
+        }
         return (
-            <div className="itemHoverTwist" key={this.props.i}
-                 onMouseEnter={this.showInfo}
-                 onMouseLeave={this.hideInfo}
-                 style={ leftRight }
-            >
-                <div style={twistItem}>
-                <div className="item">
-                    <div id="star-five" style={ twist }>
-                        <div className="child">
-                            POF!
-                        </div>
-                    </div>
-                    <p>{this.props.v.bzip}</p>
-                    <img src={circle} alt="ppItem"/>
-                    <p style={ showInfo }>{this.props.v.gittername}</p>
-                    <p style={ showInfo }>{this.props.v.time}</p>
-                </div>
-                </div>
-            </div>
+<div className="item">
+    <div className="card-header"
+         onMouseEnter={this.toggleFreeText}
+         onMouseLeave={this.toggleFreeText}
+    >
+        <div className="card-header-left">
+            <p>{this.props.v.bzip}</p>
+            <p>{this.props.v.platform}</p>
+        </div>
+        <div className="card-header-right">
+            <p>{this.props.v.channel}</p>
+            <p>{this.props.v.username}</p>
+        </div>
+    </div>
+    <div className="freeTextWrap"
+         style={{ "height": this.state.heightFreeText }}>
+        <div>
+            <p>{this.props.v.freeText}</p>
+        </div>
+    </div>
+    <div className="card-bottom">
+        <p>{this.props.v.time}</p>
+    </div>
+</div>
         )
     }
 }

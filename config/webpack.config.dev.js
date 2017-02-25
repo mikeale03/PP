@@ -103,7 +103,7 @@ module.exports = {
         exclude: [
             /\.html$/,
             /\.(js|jsx)$/,
-            /\.css$/,
+            // /\.css$/,
             /\.json$/,
             /\.svg$/,
             /\.scss$/

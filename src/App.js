@@ -20,11 +20,12 @@ class App extends Component {
                     {/*<img src={logo} alt="logo" />*/}
                 </div>
                 <div className="mainApp">
-                    <Items />
+
                     <div>
-                        <Post niceProp={'POSTProps'} />
                         <Search niceProp={'SEARCHProps'} />
+                        <Post niceProp={'POSTProps'} />
                     </div>
+                    <Items />
                 </div>
             </div>
             );
