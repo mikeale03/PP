@@ -119,10 +119,6 @@ export default class Post extends React.Component {
         let value = e.target.value;
         let newItem = Object.assign({}, this.state.newItem, {[name]: value});
         this.setState({  newItem  });
-        // let that = this;
-        // setTimeout(function(){
-        //     console.log(that.state.newItem);
-        // }, 50)
     }
 
     handleChangeBzip(value){
@@ -136,7 +132,7 @@ export default class Post extends React.Component {
                 <form className="itemForm">
                     <div className="inputWrappers">
                         <p className="postInputs">What would you like to do?</p>
-                        <select name="platform"
+                        <select className="form-control" name="platform"
                                 onChange={this.handleInputChange}
                                 id="platform">
                             <option value="FCC challenge">FCC challenge</option>
@@ -152,7 +148,8 @@ export default class Post extends React.Component {
                     </div>
                     <div className="inputWrappers">
                         <p className="postInputs">channel</p>
-                        <input name="channel" id="channel" type="text"
+                        <input className="form-control"
+                            name="channel" id="channel" type="text"
                                value={this.state.newItem.channel}
                                onChange={this.handleInputChange}
                                placeholder="gitter / discord / slack / etc"
@@ -160,7 +157,8 @@ export default class Post extends React.Component {
                     </div>
                     <div className="inputWrappers">
                         <p className="postInputs">username</p>
-                        <input name="username" id="username" type="text"
+                        <input className="form-control"
+                            name="username" id="username" type="text"
                                value={this.state.newItem.username}
                                onChange={this.handleInputChange}
                                placeholder="username"
@@ -168,7 +166,8 @@ export default class Post extends React.Component {
                     </div>
                     <div className="inputWrappers">
                         <p className="postInputs">When:</p>
-                        <select name="time" onChange={this.handleInputChange}>
+                        <select  className="form-control"
+                                 name="time" onChange={this.handleInputChange}>
                             <option value="I'm starting right now!">
                                 I am starting right now, join me!
                             </option>
@@ -180,22 +179,30 @@ export default class Post extends React.Component {
                             </option>
                         </select>
                     </div>
-
                     <div className="inputWrappers">
                         <p className="postInputs">username</p>
-                        <textarea name="freeText" id="freeText" type="text"
+                        <textarea  className="form-control"
+                                   name="freeText" id="freeText" type="text"
                                value={this.state.newItem.freeText}
                                onChange={this.handleInputChange}
                                placeholder="anything you wanna add...."
                         />
                     </div>
-                    <input id="submitButton" type="button" value="submit"
+                    <input id="submitButton" type="button" className="btn" value="submit"
                            onClick={this.handleSubmit} />
                 </form>
             </div>
         )
     }
 }
+
+
+
+
+
+
+
+
 
 class SelectBzip extends Component {
     constructor(props){
@@ -259,7 +266,7 @@ class SelectBzip extends Component {
                     "plz paste link to kata" : "challenge or project:" }</p>
                 <div className="listWrap">
                 <div className="list">
-                    <input name="bzip" type="text"
+                    <input  className="form-control" name="bzip" type="text"
                            onBlur={this.looseFocus}
                            value={this.state.bzip}
                            onChange={this.handleInputChange}
