@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const Item = require('./models/item')
 let route = express.Router();
 
-
 route.delete('/:id', (req, res) => {
   console.log('delete requested!');
   console.log(req.params);
@@ -18,7 +17,7 @@ route.delete('/:id', (req, res) => {
       res.send('item succesfully deleted!');
     } else {
       res.status(202);
-      res.send('item already deleted!');
+      res.send('item dont exist!');
     }
   });
 });
@@ -28,7 +27,6 @@ route.get('/', (req, res) => {
     Item.find({}, function (err, result) {
       if (err) throw err;
       res.send({ store: result });
-      console.log('result');
       console.log(result);
     });
 });

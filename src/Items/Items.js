@@ -18,6 +18,13 @@ export default class Items extends React.Component {
 
     componentDidMount(){
         let that = this;
+        store.subscribe(function(){
+            let storeState = store.getState();
+            that.setState({
+                items: storeState.items,
+                searchText: storeState.searchText
+            });
+        });
         axios.get('/items')
             .then(function (response) {
                 console.log(response.data.store);
@@ -26,13 +33,6 @@ export default class Items extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
-        store.subscribe(function(){
-            let storeState = store.getState();
-            that.setState({
-                items: storeState.items,
-                searchText: storeState.searchText
-            });
-        });
     }
 
     render(){
