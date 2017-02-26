@@ -1,6 +1,7 @@
 import React from 'react';
 import './search.scss';
 import { store } from '../post/Post.js';
+import { InputGroup, FormControl } from 'react-bootstrap';
 
 // action
 export const SEARCH = { type: 'SEARCH'};
@@ -34,8 +35,14 @@ export default class Search extends React.Component {
     render(){
         return (
             <div className="search">
-                hi from Search and also {this.props.niceProp}
-                <input value={this.state.searchText} onChange={this.onChangeText}/>
+                <form>
+                    <InputGroup>
+                        <InputGroup.Addon>@</InputGroup.Addon>
+                        <FormControl type="text"
+                            onChange={this.onChangeText}
+                        />
+                    </InputGroup>
+                </form>
             </div>
         )
     }

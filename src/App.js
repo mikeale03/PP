@@ -4,13 +4,10 @@ import Post from './post/Post.js';
 import Search from './search/Search.js';
 import logo from './logo.svg';
 import './App.scss';
-// import { Navbar, Jumbotron, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 
 class App extends Component {
-    componentDidMount() {
-      //this.props.fetchGames();
-    }
     render() {
         return (
             <div className="App">
@@ -19,13 +16,18 @@ class App extends Component {
                     <h2>Welcome! Go find a pair-programming-partner!</h2>
                     {/*<img src={logo} alt="logo" />*/}
                 </div>
-                <div className="mainApp">
-
-                    <div>
+                <div className="mainApp row">
+                    <div className="col-md-4">
+                      <div className="search-post-container">
                         <Search niceProp={'SEARCHProps'} />
-                        <Post niceProp={'POSTProps'} />
+                        <Post />
+                      </div>
                     </div>
-                    <Items />
+                    <div className="col-md-8">
+                      <div className="item-container">
+                        <Items />
+                      </div>
+                    </div>
                 </div>
             </div>
             );

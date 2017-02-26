@@ -31,8 +31,8 @@
 /* above: header */
 
 .mainApp {
-  height: 80vh;
-  display: flex;
+  /*height: 80vh;*/
+  /*display: flex;
   flex-flow: row nowrap;
   align-content: stretch;
   align-items: stretch;
@@ -41,9 +41,23 @@
 }
 
 .mainApp > div:first-child {
-  flex: 2;
+  /*flex: 2;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;*/
+  margin: 0 auto;
+  padding: 10px;
+}
+.search-post-container {
+  padding: 0 10px;
+  margin: 0 auto;
+}
+.mainApp > div:nth-child(2) {
+  /*flex: 3;*/
 }
 
-.mainApp > div:nth-child(2) {
-  flex: 3;
+.item-container {
+  display: block;
+  height: 710px;
+  overflow-y: scroll;
 }

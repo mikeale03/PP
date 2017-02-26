@@ -1,12 +1,9 @@
 $generalBlue: #0d385b;
 $cardHeaderGreen: #045635;
 
-.items {
-  overflow-y: scroll;
-}
+
 
 .items .itemWrap {
-  //border: 5px solid yellow;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -16,7 +13,7 @@ $cardHeaderGreen: #045635;
   border: 1px solid $generalBlue;
   border-radius: 5px;
   width: 90%;
-  margin: 5px;
+  margin-top: 5px;
   color: white;
 }
 

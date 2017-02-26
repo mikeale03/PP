@@ -119,10 +119,6 @@ export default class Post extends React.Component {
         let value = e.target.value;
         let newItem = Object.assign({}, this.state.newItem, {[name]: value});
         this.setState({  newItem  });
-        // let that = this;
-        // setTimeout(function(){
-        //     console.log(that.state.newItem);
-        // }, 50)
     }
 
     handleChangeBzip(value){
@@ -237,11 +233,7 @@ class SelectBzip extends Component {
             if(!that.state.bzip){
                 return false;
             }
-            if(regex.test(v)){
-                return true;
-            } else {
-                return false;
-            }
+            return regex.test(v);
         }).map(function(v, i){
             return <li key={i} onClick={that.pickBzip}>{v}</li>
         }).slice(0,5);
