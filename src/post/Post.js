@@ -128,70 +128,77 @@ export default class Post extends React.Component {
 
     render(){
         return (
-            <div className="post">
-                <form className="itemForm">
-                    <div className="inputWrappers">
-                        <p className="postInputs">What would you like to do?</p>
-                        <select className="form-control" name="platform"
-                                onChange={this.handleInputChange}
-                                id="platform">
-                            <option value="FCC challenge">FCC challenge</option>
-                            <option value="FCC project">FCC project</option>
-                            <option value="Codewars !!">Codewars !!</option>
-                        </select>
-                    </div>
-                    <div className="inputWrappers">
-                        <SelectBzip
-                            handleChangeBzip={this.handleChangeBzip}
-                            what={this.state.newItem.platform}
-                        />
-                    </div>
-                    <div className="inputWrappers">
-                        <p className="postInputs">channel</p>
-                        <input className="form-control"
-                            name="channel" id="channel" type="text"
-                               value={this.state.newItem.channel}
-                               onChange={this.handleInputChange}
-                               placeholder="gitter / discord / slack / etc"
-                        />
-                    </div>
-                    <div className="inputWrappers">
-                        <p className="postInputs">username</p>
-                        <input className="form-control"
-                            name="username" id="username" type="text"
-                               value={this.state.newItem.username}
-                               onChange={this.handleInputChange}
-                               placeholder="username"
-                        />
-                    </div>
-                    <div className="inputWrappers">
-                        <p className="postInputs">When:</p>
-                        <select  className="form-control"
-                                 name="time" onChange={this.handleInputChange}>
-                            <option value="I'm starting right now!">
-                                I am starting right now, join me!
-                            </option>
-                            <option value="asap!">asap</option>
-                            <option value="in an hour!">in an hour!</option>
-                            <option value="today!">today!</option>
-                            <option value="this week, lets schedule!">
-                                This week, lets schedule!
-                            </option>
-                        </select>
-                    </div>
-                    <div className="inputWrappers">
-                        <p className="postInputs">username</p>
-                        <textarea  className="form-control"
-                                   name="freeText" id="freeText" type="text"
-                               value={this.state.newItem.freeText}
-                               onChange={this.handleInputChange}
-                               placeholder="anything you wanna add...."
-                        />
-                    </div>
-                    <input id="submitButton" type="button" className="btn" value="submit"
-                           onClick={this.handleSubmit} />
-                </form>
+<div className="post">
+    <div className="card">
+        <div className="card-header topPost">
+            <div>
+                <h2>Post an Activityyy</h2>
             </div>
+        </div>
+        <form className="card-bottom">
+            <div className="inputWrappers">
+                <p className="postInputs">What would you like to do?</p>
+                <select className="form-control" name="platform"
+                        onChange={this.handleInputChange}
+                        id="platform">
+                    <option value="FCC challenge">FCC challenge</option>
+                    <option value="FCC project">FCC project</option>
+                    <option value="Codewars !!">Codewars !!</option>
+                </select>
+            </div>
+            <div className="inputWrappers">
+                <SelectBzip
+                    handleChangeBzip={this.handleChangeBzip}
+                    what={this.state.newItem.platform}
+                />
+            </div>
+            <div className="inputWrappers">
+                <p className="postInputs">channel</p>
+                <input className="form-control"
+                    name="channel" id="channel" type="text"
+                       value={this.state.newItem.channel}
+                       onChange={this.handleInputChange}
+                       placeholder="gitter / discord / slack / etc"
+                />
+            </div>
+            <div className="inputWrappers">
+                <p className="postInputs">username</p>
+                <input className="form-control"
+                    name="username" id="username" type="text"
+                       value={this.state.newItem.username}
+                       onChange={this.handleInputChange}
+                       placeholder="username"
+                />
+            </div>
+            <div className="inputWrappers">
+                <p className="postInputs">When:</p>
+                <select  className="form-control"
+                         name="time" onChange={this.handleInputChange}>
+                    <option value="I'm starting right now!">
+                        I am starting right now, join me!
+                    </option>
+                    <option value="asap!">asap</option>
+                    <option value="in an hour!">in an hour!</option>
+                    <option value="today!">today!</option>
+                    <option value="this week, lets schedule!">
+                        This week, lets schedule!
+                    </option>
+                </select>
+            </div>
+            <div className="inputWrappers">
+                <p className="postInputs">username</p>
+                <textarea  className="form-control"
+                           name="freeText" id="freeText" type="text"
+                       value={this.state.newItem.freeText}
+                       onChange={this.handleInputChange}
+                       placeholder="anything you wanna add...."
+                />
+            </div>
+            <input id="submitButton" type="button" className="btn" value="submit"
+                   onClick={this.handleSubmit} />
+        </form>
+    </div>
+</div>
         )
     }
 }
@@ -251,22 +258,18 @@ class SelectBzip extends Component {
             if(!that.state.bzip){
                 return false;
             }
-            if(regex.test(v)){
-                return true;
-            } else {
-                return false;
-            }
+            return regex.test(v);
         }).map(function(v, i){
             return <li key={i} onClick={that.pickBzip}>{v}</li>
         }).slice(0,5);
 
         return(
             <div className="selectBzip">
-                <p className="postInputs">{this.props.what === "Codewars !!" ?
-                    "plz paste link to kata" : "challenge or project:" }</p>
+                <p>{this.props.what === "Codewars !!" ?
+                    "plz paste link to kata" : "Challenge/Project name" }</p>
                 <div className="listWrap">
                 <div className="list">
-                    <input  className="form-control" name="bzip" type="text"
+                    <input id="inputChallenge" className="form-control" name="bzip" type="text"
                            onBlur={this.looseFocus}
                            value={this.state.bzip}
                            onChange={this.handleInputChange}

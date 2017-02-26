@@ -1,3 +1,5 @@
+$generalBlue: #0d385b;
+$cardHeaderGreen: #045635;
 
 .post {
   padding: 10px;
@@ -19,24 +21,54 @@
   z-index: 1;
 }
 
-.post .listWrap {
-  display: inline-block;
-}
-
 .post .list {
   display: flex;
   justify-content: center;
 }
 
 .post ul {
+  //border: 1px solid red;
   display: inline-block;
   position: absolute;
-  top: 20px;
+  top: 25px;
   background: white;
-  width: 200px;
-  margin-right: auto;
+  width: 100%;
 }
 
 .post li {
   list-style-type: none;
+  color: grey;
 }
+
+.card {
+  color: white;
+}
+
+.card-header {
+  background: $cardHeaderGreen;
+  text-align: left;
+}
+
+.card-bottom {
+  background: $generalBlue;
+  padding: 5px;
+}
+
+.post #submitButton {
+  margin: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
